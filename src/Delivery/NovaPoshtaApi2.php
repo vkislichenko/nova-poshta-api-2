@@ -38,7 +38,7 @@ class NovaPoshtaApi2
     /**
      * @var string Language of response
      */
-    protected $language = 'ru';
+    protected $language = 'ua';
 
     /**
      * @var string Connection type (curl | file_get_contents)
@@ -207,7 +207,7 @@ class NovaPoshtaApi2
      *
      * @return mixed
      */
-    private function prepare($data)
+    protected function prepare($data)
     {
         // Returns array
         if ('array' == $this->format) {
@@ -230,7 +230,7 @@ class NovaPoshtaApi2
      * @param array $array
      * @param \SimpleXMLElement|bool $xml
      */
-    private function array2xml(array $array, $xml = false)
+    protected function array2xml(array $array, $xml = false)
     {
         (false === $xml) and $xml = new \SimpleXMLElement('<root/>');
         foreach ($array as $key => $value) {
@@ -253,7 +253,7 @@ class NovaPoshtaApi2
      * @param string $method Method name
      * @param array  $params Required params
      */
-    private function request($model, $method, $params = null)
+    protected function request($model, $method, $params = null)
     {
         // Get required URL
         $url = 'xml' == $this->format
